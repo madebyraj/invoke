@@ -102,9 +102,12 @@
       resetClickSound.load();
 
       // Vibration pattern
-      function vibratePattern() {
-        if (navigator.vibrate) {
-          navigator.vibrate(200);
+      let lastVibration = 0;
+      function vibrate(ms = 1000) {
+        const now = Date.now();
+        if (navigator.vibrate && now - lastVibration > 300) {
+          navigator.vibrate([10, 20, 10]);
+          lastVibration = now;
         }
       }
 
