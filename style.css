@@ -202,19 +202,19 @@ main {
 
 .button-shortcut {
   position: absolute;
-  font: 400 16px / 100% var(--font-brand);
-  letter-spacing: -0.075rem;
+  font: 700 16px / 100% var(--font-brand);
+  letter-spacing: -0.05rem;
   right: 16px;
   top: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1d1d1f;
+  color: #6E6E73;
+  text-align: center;
 }
 
 .button-large:hover {
-  transform: translateY(-2px);
-  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.12) inset, 0 10px 0 0 #acacb1;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.12) inset, 0 8px 0 0 #acacb1;
 }
 
 .button-large:active {
