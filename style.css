@@ -189,6 +189,7 @@ main {
   cursor: pointer;
   transition: box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .button-large-icon {
@@ -209,7 +210,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6E6E73;
+  color: #6e6e73;
   text-align: center;
 }
 
