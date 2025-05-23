@@ -3,27 +3,43 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoke - Chant 24/7</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+
+    <div id="loading-screen">
+        <p class="loading-text">Take a deep breath</p>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+
+
     <main>
         <div class="header">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156.43 32" class="logo" aria-label="Logo">
-                <path
-                    d="M155.429 0V4.57143H137.143V13.7143H150.857V18.2857H137.143V27.4286H155.429V32H132.572V0H155.429Z" />
-                <path
-                    d="M109.714 18.2857V32H105.143V0H109.714V13.7143H112V11.4286H114.286V9.14286H116.571V6.85714H118.857V4.57143H121.143V2.28571H123.429V0H128V4.57143H125.714V6.85714H123.429V9.14286H121.143V11.4286H118.857V13.7143H116.571V18.2857H118.857V20.5714H121.143V22.8571H123.429V25.1429H125.714V27.4286H128V32H123.429V29.7143H121.143V27.4286H118.857V25.1429H116.571V22.8571H114.286V20.5714H112V18.2857H109.714Z" />
-                <path
-                    d="M93.7144 4.57143H84.5715V6.85714H82.2858V25.1429H84.5715V27.4286H93.7144V25.1429H96.0001V6.85714H93.7144V4.57143ZM82.2858 2.28571V0H96.0001V2.28571H98.2858V4.57143H100.571V27.4286H98.2858V29.7143H96.0001V32H82.2858V29.7143H80.0001V27.4286H77.7144V4.57143H80.0001V2.28571H82.2858Z" />
-                <path
-                    d="M52.5716 22.8571H50.2859V0H54.8573V20.5714H57.143V22.8571H59.4287V25.1429H64.0002V22.8571H66.2859V20.5714H68.5716V0H73.143V22.8571H70.8573V25.1429H68.5716V27.4286H66.2859V29.7143H64.0002V32H59.4287V29.7143H57.143V27.4286H54.8573V25.1429H52.5716V22.8571Z" />
-                <path
-                    d="M27.4286 13.7143V32H22.8572V0H27.4286V6.85714H29.7143V9.14286H32V11.4286H34.2857V13.7143H36.5715V16H38.8572V18.2857H41.1429V0H45.7143V32H41.1429V25.1429H38.8572V22.8571H36.5715V20.5714H34.2857V18.2857H32V16H29.7143V13.7143H27.4286Z" />
-                <path d="M0 32V27.4286H4.57143V4.57143H0V0H13.7143V4.57143H9.14286V27.4286H13.7143V32H0Z" />
-            </svg>
+            <div class="hero-section">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156.43 32" class="logo" aria-label="Logo">
+                    <path
+                        d="M155.429 0V4.57143H137.143V13.7143H150.857V18.2857H137.143V27.4286H155.429V32H132.572V0H155.429Z" />
+                    <path
+                        d="M109.714 18.2857V32H105.143V0H109.714V13.7143H112V11.4286H114.286V9.14286H116.571V6.85714H118.857V4.57143H121.143V2.28571H123.429V0H128V4.57143H125.714V6.85714H123.429V9.14286H121.143V11.4286H118.857V13.7143H116.571V18.2857H118.857V20.5714H121.143V22.8571H123.429V25.1429H125.714V27.4286H128V32H123.429V29.7143H121.143V27.4286H118.857V25.1429H116.571V22.8571H114.286V20.5714H112V18.2857H109.714Z" />
+                    <path
+                        d="M93.7144 4.57143H84.5715V6.85714H82.2858V25.1429H84.5715V27.4286H93.7144V25.1429H96.0001V6.85714H93.7144V4.57143ZM82.2858 2.28571V0H96.0001V2.28571H98.2858V4.57143H100.571V27.4286H98.2858V29.7143H96.0001V32H82.2858V29.7143H80.0001V27.4286H77.7144V4.57143H80.0001V2.28571H82.2858Z" />
+                    <path
+                        d="M52.5716 22.8571H50.2859V0H54.8573V20.5714H57.143V22.8571H59.4287V25.1429H64.0002V22.8571H66.2859V20.5714H68.5716V0H73.143V22.8571H70.8573V25.1429H68.5716V27.4286H66.2859V29.7143H64.0002V32H59.4287V29.7143H57.143V27.4286H54.8573V25.1429H52.5716V22.8571Z" />
+                    <path
+                        d="M27.4286 13.7143V32H22.8572V0H27.4286V6.85714H29.7143V9.14286H32V11.4286H34.2857V13.7143H36.5715V16H38.8572V18.2857H41.1429V0H45.7143V32H41.1429V25.1429H38.8572V22.8571H36.5715V20.5714H34.2857V18.2857H32V16H29.7143V13.7143H27.4286Z" />
+                    <path d="M0 32V27.4286H4.57143V4.57143H0V0H13.7143V4.57143H9.14286V27.4286H13.7143V32H0Z" />
+                </svg>
+                <p class="subtitle">
+                    Chant with focus, one tap at a time.
+                </p>
+            </div>
+
             <div class="tally">
                 <div class="tally-content">
                     <p class="tally-number">0</p>
@@ -32,14 +48,14 @@
         </div>
         <div class="footer">
             <div class="buttons">
-                <button class="button-large" id="button-reset" aria-label="Reset Button">
+                <button class="button-large" id="button-reset" aria-label="Reset Button" onclick="vibrate">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="button-large-icon">
                         <path
                             d="M23.9244 11.285V5.70497C23.9244 4.80497 22.8444 4.36497 22.2244 5.00497L14.6244 12.585C14.2244 12.985 14.2244 13.605 14.6244 14.005L22.2044 21.585C22.8444 22.205 23.9244 21.765 23.9244 20.865V15.285C31.3844 15.285 37.2844 22.125 35.6444 29.865C34.7044 34.405 31.0244 38.065 26.5044 39.005C19.3644 40.505 13.0044 35.605 12.0444 28.985C11.9044 28.025 11.0644 27.285 10.0844 27.285C8.88437 27.285 7.92437 28.345 8.08437 29.545C9.32437 38.325 17.6844 44.825 27.1444 42.985C33.3844 41.765 38.4044 36.745 39.6244 30.505C41.6044 20.245 33.8044 11.285 23.9244 11.285Z" />
                     </svg>
                     <div class="button-shortcut">R</div>
                 </button>
-                <button class="button-large" id="button-add" aria-label="Add Button">
+                <button class="button-large" id="button-add" aria-label="Add Button" onclick="vibrate">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="button-large-icon">
                         <path
                             d="M36.0001 26H26.0001V36C26.0001 37.1 25.1001 38 24.0001 38C22.9001 38 22.0001 37.1 22.0001 36V26H12.0001C10.9001 26 10.0001 25.1 10.0001 24C10.0001 22.9 10.9001 22 12.0001 22H22.0001V12C22.0001 10.9 22.9001 10 24.0001 10C25.1001 10 26.0001 10.9 26.0001 12V22H36.0001C37.1001 22 38.0001 22.9 38.0001 24C38.0001 25.1 37.1001 26 36.0001 26Z" />
@@ -52,55 +68,70 @@
 </body>
 
 <script>
-    const addButton = document.getElementById('button-add');
-    const resetButton = document.getElementById('button-reset');
-    const tallyNumber = document.querySelector('.tally-number');
+    const tallyNumber = document.querySelector(".tally-number");
+    const addButton = document.getElementById("button-add");
+    const resetButton = document.getElementById("button-reset");
 
-    let count = 0;
+    const addClickSound = new Audio("./button-add-sound.mp3");
+    const resetClickSound = new Audio("./button-reset-sound.mp3");
 
-    // Sound setup
-    const clickSound = new Audio('click.mp3');
-    clickSound.load();
-
-    function playClickSound() {
-        clickSound.currentTime = 0; // Reset to start
-        clickSound.play().catch(e => {
-            console.log('Audio error:', e);
-        });
-    }
-
-    // Vibration
-    function vibrate() {
-        if ('vibrate' in navigator) {
-            navigator.vibrate(50);
+    function vibrate(ms = 1000) {
+        if (navigator.vibrate) {
+            navigator.vibrate(ms);
         }
     }
 
-    // Event Listeners
-    addButton.addEventListener('click', () => {
-        count++;
-        tallyNumber.textContent = count;
-        playClickSound();
+    addButton.addEventListener("click", () => {
+        let count = parseInt(tallyNumber.textContent);
+        tallyNumber.textContent = count + 1;
+        addClickSound.currentTime = 0;
+        addClickSound.play();
         vibrate();
     });
 
-    resetButton.addEventListener('click', () => {
-        count = 0;
-        tallyNumber.textContent = count;
-        playClickSound();
+    resetButton.addEventListener("click", () => {
+        tallyNumber.textContent = 0;
+        resetClickSound.currentTime = 0;
+        resetClickSound.play();
         vibrate();
     });
 
-    document.addEventListener('keydown', (e) => {
-        const key = e.key.toLowerCase();
-
-        if (key === 'a') {
+    // Keyboard shortcuts
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "a" || e.key === "A") {
             addButton.click();
-        } else if (key === 'r') {
+        } else if (e.key === "r" || e.key === "R") {
             resetButton.click();
         }
     });
 
 </script>
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const fill = document.querySelector(".progress-fill");
+        const screen = document.getElementById("loading-screen");
+
+        let progress = 0;
+        const speed = 0.36; // adjust speed for smoother or faster load
+
+        function animateProgress() {
+            if (progress < 100) {
+                progress += speed;
+                fill.style.width = `${progress}%`;
+                requestAnimationFrame(animateProgress);
+            } else {
+                fill.style.width = "100%";
+                setTimeout(() => {
+                    screen.classList.add("hidden");
+                    setTimeout(() => screen.remove(), 600); // match fade-out duration
+                }, 400);
+            }
+        }
+
+        animateProgress();
+    });
+</script>
+
 
 </html>
