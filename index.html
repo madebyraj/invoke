@@ -98,50 +98,36 @@
       const addButton = document.getElementById("button-add");
       const resetButton = document.getElementById("button-reset");
 
-      let addBuffer = null;
-      let resetBuffer = null;
-      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const addClickSound = new Audio("./button-add-sound.mp3");
+      const resetClickSound = new Audio("./button-reset-sound.mp3");
 
-      function loadSound(url, callback) {
-        fetch(url)
-          .then((res) => res.arrayBuffer())
-          .then((buffer) =>
-            audioCtx.decodeAudioData(buffer, (decoded) => callback(decoded))
-          );
-      }
+      // Preload sounds
+      addClickSound.preload = "auto";
+      resetClickSound.preload = "auto";
+      addClickSound.load();
+      resetClickSound.load();
 
-      // Load both button sounds
-      loadSound("./button-add-sound.mp3", (buffer) => (addBuffer = buffer));
-      loadSound("./button-reset-sound.mp3", (buffer) => (resetBuffer = buffer));
-
-      function playSound(buffer) {
-        if (!buffer) return;
-        const source = audioCtx.createBufferSource();
-        source.buffer = buffer;
-        source.connect(audioCtx.destination);
-        source.start(0);
-      }
-
-      function vibrate() {
-        if ("vibrate" in navigator) {
-          navigator.vibrate(0); // Cancel ongoing vibration
-          setTimeout(() => {
-            navigator.vibrate([10, 20, 10]); // Pattern vibration
-          }, 10);
+      // Vibration pattern
+      function vibratePattern() {
+        if (navigator.vibrate) {
+          navigator.vibrate(100);
         }
       }
 
+      // Button events
       addButton.addEventListener("click", () => {
         let count = parseInt(tallyNumber.textContent);
         tallyNumber.textContent = count + 1;
-        playSound(addBuffer);
-        vibrate();
+        addClickSound.currentTime = 0;
+        addClickSound.play();
+        vibratePattern();
       });
 
       resetButton.addEventListener("click", () => {
         tallyNumber.textContent = 0;
-        playSound(resetBuffer);
-        vibrate();
+        resetClickSound.currentTime = 0;
+        resetClickSound.play();
+        vibratePattern();
       });
 
       // Keyboard shortcuts
@@ -160,7 +146,10 @@
         const screen = document.getElementById("loading-screen");
 
         let progress = 0;
-        const speed = 0.36; // adjust speed for smoother or faster load
+        const speed = 0.36; // Controls loader fill speed
+        const MIN_DISPLAY_TIME = 1000; // in milliseconds
+        const startTime = performance.now();
+        let loadComplete = false;
 
         function animateProgress() {
           if (progress < 100) {
@@ -169,12 +158,26 @@
             requestAnimationFrame(animateProgress);
           } else {
             fill.style.width = "100%";
-            setTimeout(() => {
-              screen.classList.add("hidden");
-              setTimeout(() => screen.remove(), 600); // match fade-out duration
-            }, 400);
+            checkIfCanHide();
           }
         }
+
+        function checkIfCanHide() {
+          const elapsedTime = performance.now() - startTime;
+          const remainingTime = Math.max(0, MIN_DISPLAY_TIME - elapsedTime);
+
+          setTimeout(() => {
+            screen.classList.add("hidden");
+            setTimeout(() => screen.remove(), 600); // fade out transition
+          }, remainingTime);
+        }
+
+        window.addEventListener("load", () => {
+          loadComplete = true;
+          if (progress >= 100) {
+            checkIfCanHide();
+          }
+        });
 
         animateProgress();
       });
